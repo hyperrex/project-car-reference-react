@@ -36,15 +36,14 @@ class SignUpForm extends React.Component {
           className="container border border-primary rounded my-5 w-50"
           id="sign-up-container"
         >
-          <form id="sign-up-form" className="form text-center">
+          <form id="sign-up-form" className="form text-center" onSubmit={this.handleSubmit}>
             <h4 className="m-1 text-center">
               Not registered yet? Just enter your information below.
             </h4>
             <div className="row">
               <div className="form-group text-center col-6">
-                <label for="first-name" className="control-label" />
+                <label htmlFor="first-name" className="control-label" />
                 <input
-                  required
                   type="first-name"
                   className="form-control text-center text-muted"
                   id="first-name"
@@ -54,9 +53,8 @@ class SignUpForm extends React.Component {
               </div>
 
               <div className="form-group text-center col-6">
-                <label for="last-name" className="control-label" />
+                <label htmlFor="last-name" className="control-label" />
                 <input
-                  required
                   type="last-name"
                   className="form-control text-center text-muted"
                   id="last-name"
@@ -68,9 +66,8 @@ class SignUpForm extends React.Component {
 
             <div className="row">
               <div className="form-group text-center col-12">
-                <label for="email" className="control-label" />
+                <label htmlFor="email" className="control-label" />
                 <input
-                  required
                   type="email"
                   className="form-control text-center text-muted"
                   id="create-email"
@@ -82,15 +79,14 @@ class SignUpForm extends React.Component {
 
             <div className="row">
               <div className="form-group text-center col-6">
-                <label for="password" className="control-label" />
+                <label htmlFor="password" className="control-label" />
                 <input
-                  required
                   type="password"
                   className="form-control text-center text-muted"
                   id="sign-up-password"
                   placeholder="Password"
-                  required
                   pattern="(?=^.{8,30}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+                  required
                 />
                 <small id="passwordHelpInline" className="text-center">
                   Must be 8-30 characters long and include upper and lower case
@@ -99,15 +95,14 @@ class SignUpForm extends React.Component {
               </div>
 
               <div className="form-group text-center col-6">
-                <label for="verify-password" className="control-label" />
+                <label htmlFor="verify-password" className="control-label" />
                 <input
-                  required
                   type="password"
                   className="form-control text-center text-muted"
                   id="verify-password"
                   placeholder="Re-Enter Password"
-                  required
                   pattern="(?=^.{8,30}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+                  required
                 />
                 <small id="passwordHelpInline" className="text-center">
                   Re-entry password to verify

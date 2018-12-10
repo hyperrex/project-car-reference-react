@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import UserProject from './UserProject';
 
 class Projects extends Component {
+
   render() {
     // console.log(this.props)
     let UserProjects;
