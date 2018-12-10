@@ -1,6 +1,9 @@
 import React from 'react';
 import Navbar from './Navbar';
 
+const BASE_URL = 'http://localhost:8000';
+// const BASE_URL = 'https://project-car-reference-api.herokuapp.com';
+
 class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +20,7 @@ class SignUpForm extends React.Component {
     event.preventDefault();
     console.log(this.state);
     try {
-      let response = await fetch('https://localhost:8000/users/', {
+      let response = await fetch(`${BASE_URL}/users`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json; charset=utf-8' },
         body: JSON.stringify(this.state)

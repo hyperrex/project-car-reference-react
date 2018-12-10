@@ -1,6 +1,8 @@
 import React from 'react';
 import Navbar from './Navbar';
 
+const BASE_URL = 'http://localhost:8000';
+// const BASE_URL = 'https://project-car-reference-api.herokuapp.com';
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +15,7 @@ class LoginForm extends React.Component {
 
   handleSubmit = async event => {
     event.preventDefault();
-    let response = await fetch('http://localhost:8000/users/login/', {
+    let response = await fetch(`${BASE_URL}/users/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
       body: JSON.stringify({
