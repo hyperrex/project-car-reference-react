@@ -4,7 +4,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Projects from './components/Projects';
 import UserProject from './components/UserProject';
-import AddProject from './components/AddProject';
+import CreateProject from './components/CreateProject';
 import './App.css';
 
 class App extends Component {
@@ -18,7 +18,7 @@ class App extends Component {
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/projects" component={Projects} />
             <Route exact path="/userproject" component={UserProject} />
-            <Route exact path="/addproject" component={AddProject} />
+            <Route exact path="/createproject" component={CreateProject} />
           </div>
         </Router>
       </div>

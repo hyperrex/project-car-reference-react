@@ -1,35 +1,34 @@
 import { FETCH_PROJECTS, NEW_PROJECT } from './types';
 
+const BASE_URL = 'http://localhost:8000';
+// const BASE_URL = 'https://project-car-reference-api.herokuapp.com';
+
 export const fetchProjects = () => dispatch => {
-  console.log('fetching...')
-    fetch('http://localhost:8000/projects')
+  console.log('fetching...');
+  fetch(`${BASE_URL}/projects`)
     .then(res => res.json())
-    .then(projects => dispatch({
-      type: FETCH_PROJECTS,
-      payload: projects
-  }));
-}
+    .then(projects =>
+      dispatch({
+        type: FETCH_PROJECTS,
+        payload: projects
+      })
+    );
+};
 
-// export const getProjects = () => {
-//   return async (dispatch) => {
-//     dispatch({ type: PROJECTS_REQUEST_STARTED })
-//     const response = await request(`http://localhost:8000/projects`)
-//     const json = await response.json()
-//     dispatch({
-//       type: PROJECTS_REQUEST_SUCCESS,
-//       messages: json._embedded.messages,
-//     })
-//   }
-// }
-
-// async function request(path, method = 'GET', body = null) {
-//   if (body) body = JSON.stringify(body)
-//   return await fetch(`${process.env.REACT_APP_API_URL}${path}`, {
-//     method: method,
-//     headers: {
-//       'Content-Type': 'application/json',
-//       'Accept': 'application/json',
-//     },
-//     body: body
-//   })
-// }
+export const createProject = project => dispatch => {
+  console.log('Action called!!!')
+  fetch(`${BASE_URL}/`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(project)
+  })
+    .then(res => res.json())
+    .then(project =>
+      dispatch({
+        type: NEW_PROJECT,
+        payload: project
+      })
+    );
+};

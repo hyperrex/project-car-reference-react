@@ -8,11 +8,16 @@ const initialState = {
 export default function(state = initialState, action) {
   switch(action.type) {
     case FETCH_PROJECTS:
-    console.log('reducer...')
     return {
       ...state,
       jobs: action.payload
     }
-    default: return state
+    case NEW_PROJECT:
+    return {
+      ...state,
+      job: action.payload
+    }
+    default:
+      return state
   }
 }

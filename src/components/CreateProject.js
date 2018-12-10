@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createProject } from '../actions/projectActions';
 import Navbar from './Navbar';
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-class AddUserProject extends Component {
-  state = {
-    project_title: '',
-    project_description: ''
-  };
 
-  addProj = e => {
-    e.preventDefault();
-
-    let { project_title, project_description } = this.state;
-
-    let newProject = {
-      project_title,
-      project_description
+class CreateProject extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: '',
+      description: ''
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-    this.props.addProj(newProject, this.props.history);
-  };
+  handleSubmit(e) {
+    e.preventDefault();
+    const newProject = {
+      title: this.state.title,
+      description: this.state.description
+    };
+    this.props.createProject(newProject, this.props.history);
+  }
 
   render() {
     return (
@@ -29,7 +31,7 @@ class AddUserProject extends Component {
           className="container border border-primary rounded my-5 w-50"
           id="create-project-container"
         >
-          <form id="create-project-form" className="form text-center">
+          <form id="create-project-form" className="form text-center" onSubmit={this.handleSubmit}>
             <h4 className="m-1 text-center">Create Project</h4>
 
             <div className="form-group text-center">
@@ -40,7 +42,7 @@ class AddUserProject extends Component {
                 className="form-control text-center"
                 id="project-title"
                 placeholder="Title"
-                onChange={e => this.setState({ project_title: e.target.value })}
+                onChange={e => this.setState({ title: e.target.value })}
               />
             </div>
 
@@ -52,9 +54,7 @@ class AddUserProject extends Component {
                 className="form-control text-center"
                 id="project-description"
                 placeholder="Description"
-                onChange={e =>
-                  this.setState({ project_description: e.target.value })
-                }
+                onChange={e => this.setState({ description: e.target.value })}
               />
             </div>
 
@@ -73,19 +73,11 @@ class AddUserProject extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    ...state
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    AddUserProject: bindActionCreators(AddUserProject, dispatch)
-  };
-}
+CreateProject.propTypes = {
+  createProject: PropTypes.func.isRequired
+};
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AddUserProject);
+  null,
+  { createProject }
+)(CreateProject);
