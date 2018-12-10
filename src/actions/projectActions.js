@@ -17,7 +17,7 @@ export const fetchProjects = () => dispatch => {
 
 export const createProject = project => dispatch => {
   console.log('Action called!!!')
-  fetch(`${BASE_URL}/`, {
+  fetch(`${BASE_URL}/projects`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json'

@@ -20,7 +20,8 @@ class CreateProject extends Component {
       title: this.state.title,
       description: this.state.description
     };
-    this.props.createProject(newProject, this.props.history);
+    this.props.createProject(newProject);
+    // this.props.history.push('/projects')
   }
 
   render() {
