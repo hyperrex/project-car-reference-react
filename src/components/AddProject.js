@@ -74,7 +74,9 @@ class AddUserProject extends Component {
 }
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    ...state
+  }
 }
 
 function mapDispatchToProps(dispatch) {

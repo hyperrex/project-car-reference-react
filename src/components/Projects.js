@@ -18,7 +18,7 @@ class Projects extends Component {
   }
 
   render() {
-    console.log('>>>>>>', this.state.projects[0])
+    console.log('>>>>>>', this.state.projects)
     let UserProjects;
     if (this.state.projects) {
       UserProjects = this.state.projects.map(project => (

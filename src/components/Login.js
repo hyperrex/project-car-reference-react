@@ -24,6 +24,7 @@ class LoginForm extends React.Component {
     let json = await response.json();
     localStorage.setItem('token', response.headers.get('authorization'));
     localStorage.setItem('user', json[0].id)
+    this.props.history.push('/projects')
   };
 
   render() {
