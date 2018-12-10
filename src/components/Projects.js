@@ -1,27 +1,20 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { fetchPosts } from '../actions/projectActions'
 import Navbar from './Navbar';
 // import UserProject from './UserProject';
 
 class Projects extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      projects: []
-    };
-  }
 
   async componentDidMount() {
-    const response = await fetch('http://localhost:8000/projects');
-    const json = await response.json();
-    // console.log('JSON >>>>>', json);
-    this.setState({ projects: json });
+    this.props.fetchPosts();
   }
 
   render() {
-    console.log('>>>>>>', this.state.projects)
     let UserProjects;
-    if (this.state.projects) {
-      UserProjects = this.state.projects.map(project => (
+    if (this.props.projects) {
+      UserProjects = this.props.projects.map(project => (
         <div key={project.id}>
           <h3>{project.title}</h3>
           <p>{project.description}</p>
@@ -41,4 +34,13 @@ class Projects extends Component {
   }
 }
 
-export default Projects;
+Projects.propTypes = {
+  fetchProjects: PropTypes.func,
+  projects: PropTypes.array.isRequired
+}
+
+const mapStatetoProps = state => ({
+  projects: state.projects.projects
+});
+
+export default connect(mapStatetoProps, { fetchPosts })(Projects);

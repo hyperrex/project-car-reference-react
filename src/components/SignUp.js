@@ -5,38 +5,44 @@ class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      first_name: '',
+      last_name: '',
+      email: '',
+      password: ''
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  handleChange = event => {
-    this.setState({ name: event.target.value });
-  };
 
   handleSubmit = async event => {
     event.preventDefault();
-    console.log(this.state)
-    let response = await fetch(
-      'https://localhost:8000/users/',
-      {
+    console.log(this.state);
+    try {
+      let response = await fetch('https://localhost:8000/users/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json; charset=utf-8' },
         body: JSON.stringify(this.state)
-      }
-    );
-    let json = await response.json();
-    console.log('Response: ', json);
+      });
+      let json = await response.json();
+      console.log('Response: ', json);
+    }
+    catch(error) {
+      console.log(error)
+    }
   };
 
   render() {
     return (
       <div>
         <Navbar />
-
         <div
           className="container border border-primary rounded my-5 w-50"
           id="sign-up-container"
         >
-          <form id="sign-up-form" className="form text-center" onSubmit={this.handleSubmit}>
+          <form
+            id="sign-up-form"
+            className="form text-center"
+            onSubmit={this.handleSubmit}
+          >
             <h4 className="m-1 text-center">
               Not registered yet? Just enter your information below.
             </h4>
@@ -49,6 +55,7 @@ class SignUpForm extends React.Component {
                   id="first-name"
                   placeholder="First Name"
                   required
+                  onChange={e => this.setState({ first_name: e.target.value })}
                 />
               </div>
 
@@ -60,6 +67,7 @@ class SignUpForm extends React.Component {
                   id="last-name"
                   placeholder="Last Name"
                   required
+                  onChange={e => this.setState({ last_name: e.target.value })}
                 />
               </div>
             </div>
@@ -73,6 +81,7 @@ class SignUpForm extends React.Component {
                   id="create-email"
                   placeholder="Email"
                   required
+                  onChange={e => this.setState({ email: e.target.value })}
                 />
               </div>
             </div>
@@ -87,6 +96,7 @@ class SignUpForm extends React.Component {
                   placeholder="Password"
                   pattern="(?=^.{8,30}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
                   required
+                  onChange={e => this.setState({ password: e.target.value })}
                 />
                 <small id="passwordHelpInline" className="text-center">
                   Must be 8-30 characters long and include upper and lower case
