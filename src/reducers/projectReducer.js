@@ -1,8 +1,8 @@
 import { FETCH_PROJECTS, NEW_PROJECT } from '../actions/types';
 
 const initialState = {
-  projects: [],
-  project: {}
+  jobs: [],
+  job: {}
 }
 
 export default function(state = initialState, action) {
@@ -11,7 +11,7 @@ export default function(state = initialState, action) {
     console.log('reducer...')
     return {
       ...state,
-      projects: action.payload
+      jobs: action.payload
     }
     default: return state
   }

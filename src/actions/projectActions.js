@@ -1,6 +1,6 @@
 import { FETCH_PROJECTS, NEW_PROJECT } from './types';
 
-export const fetchPosts = () => dispatch => {
+export const fetchProjects = () => dispatch => {
   console.log('fetching...')
     fetch('http://localhost:8000/projects')
     .then(res => res.json())

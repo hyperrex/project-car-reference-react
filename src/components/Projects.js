@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../actions/projectActions'
+import { fetchProjects } from '../actions/projectActions'
 import Navbar from './Navbar';
 // import UserProject from './UserProject';
 
 class Projects extends Component {
 
   async componentDidMount() {
-    this.props.fetchPosts();
+    this.props.fetchProjects();
   }
 
   render() {
@@ -40,7 +40,7 @@ Projects.propTypes = {
 }
 
 const mapStatetoProps = state => ({
-  projects: state.projects.projects
+  projects: state.projects.jobs
 });
 
-export default connect(mapStatetoProps, { fetchPosts })(Projects);
+export default connect(mapStatetoProps, { fetchProjects })(Projects);
