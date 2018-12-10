@@ -1,19 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-// import { Provider } from 'react-redux';
-// import store from './store';
+import { Provider } from 'react-redux';
+import store from './store';
 import * as serviceWorker from './serviceWorker';
 
 // import { fetchPosts } from './actions/postActions';
 // store.dispatch(fetchPosts());
-// <Provider store={ store }>
-// </Provider>,
+
 
 ReactDOM.render(
-
-    <App />,
-
+  <Provider store={ store }>
+    <App />
+    </Provider>,
   document.getElementById('root')
 );
 
