@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-
+import Navbar from './Navbar';
 class UserProject extends Component {
   render() {
     return (
-      <li className="Project">
-      <strong>{this.props.project.title}</strong>: {this.props.project.category}
-      </li>
+      <div>
+        <Navbar />
+        <li className="Project">
+          <strong>{this.props.project.title}</strong>:{' '}
+          {this.props.project.category}
+        </li>
+      </div>
     );
   }
 }
