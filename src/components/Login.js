@@ -1,4 +1,5 @@
 import React from 'react'
+import Navbar from './Navbar';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -29,6 +30,9 @@ class LoginForm extends React.Component {
 
   render() {
     return (
+      <div>
+      <Navbar />
+      
       <form onSubmit={this.handleSubmit}>
         <label>
           Email:
@@ -40,6 +44,7 @@ class LoginForm extends React.Component {
         </label>
         <input type="submit" value="Submit" />
       </form>
+      </div>
     );
   }
 }
