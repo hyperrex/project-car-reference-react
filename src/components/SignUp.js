@@ -5,7 +5,6 @@ class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ''
     };
   }
 
@@ -15,12 +14,13 @@ class SignUpForm extends React.Component {
 
   handleSubmit = async event => {
     event.preventDefault();
+    console.log(this.state)
     let response = await fetch(
-      'https://project-car-reference-api.herokuapp.com/users/',
+      'https://localhost:8000/users/',
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json; charset=utf-8' },
-        body: JSON.stringify({ name: this.state.name })
+        body: JSON.stringify(this.state)
       }
     );
     let json = await response.json();

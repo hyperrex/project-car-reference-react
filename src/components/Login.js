@@ -8,11 +8,8 @@ class LoginForm extends React.Component {
       email: '',
       password: ''
     };
+    this.handleSubmit=this.handleSubmit.bind(this);
   }
-
-  handleChange = event => {
-    this.setState({ name: event.target.value });
-  };
 
   handleSubmit = async event => {
     event.preventDefault();
@@ -24,19 +21,15 @@ class LoginForm extends React.Component {
         password: this.state.password
       })
     });
-    // console.log('JWT Token in header >>>>>', response.headers.get('authorization'))
-    localStorage.clear()
-    localStorage.setItem('test-token', 'hi');
-    // localStorage.setItem('user', response.data);
     let json = await response.json();
-    console.log('Response: ', json);
+    localStorage.setItem('token', response.headers.get('authorization'));
+    localStorage.setItem('user', json[0].id)
   };
 
   render() {
     return (
       <div>
         <Navbar />
-
         <div
           className="container border border-primary rounded my-5 w-50"
           id="login-form-container"
@@ -48,6 +41,8 @@ class LoginForm extends React.Component {
                 <label htmlFor="email" className="control-label" />
                 <input
                   type="email"
+                  value={this.state.value}
+                  onChange={e => this.setState({ email: e.target.value })}
                   className="form-control text-center text-muted"
                   id="email"
                   placeholder="Email"
@@ -59,7 +54,7 @@ class LoginForm extends React.Component {
                 <input
                   type="password"
                   value={this.state.value}
-                  onChange={e => this.setState({ email: e.target.value })}
+                  onChange={e => this.setState({ password: e.target.value })}
                   className="form-control text-center text-muted"
                   id="password"
                   placeholder="Password"
@@ -71,8 +66,7 @@ class LoginForm extends React.Component {
             <div className="form-group text-center ">
               <button
                 type="submit"
-                value={this.state.value}
-                onChange={e => this.setState({ email: e.target.value })}
+                value="Submit"
                 id="login-button"
                 className="btn btn-lg btn-primary"
               >
@@ -87,27 +81,3 @@ class LoginForm extends React.Component {
 }
 
 export default LoginForm;
-
-
-// <div>
-// <Navbar />
-// <form onSubmit={this.handleSubmit}>
-//   <label>
-//     Email:
-//     <input
-//       type="text"
-//       value={this.state.value}
-//       onChange={e => this.setState({ email: e.target.value })}
-//     />
-//   </label>
-//   <label>
-//     Password:
-//     <input
-//       type="text"
-//       value={this.state.value}
-//       onChange={e => this.setState({ password: e.target.value })}
-//     />
-//   </label>
-//   <input type="submit" value="Submit" />
-// </form>
-// </div>

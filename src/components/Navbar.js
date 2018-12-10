@@ -13,7 +13,6 @@ class Navbar extends Component {
               <button
                 id="view-my-projects-button"
                 className="btn btn-primary ml-2"
-                
               >
                 <i className="far fa-folder-open" /> My Projects
               </button>
