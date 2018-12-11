@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 // const BASE_URL = 'http://localhost:8000';
 const BASE_URL = 'https://project-car-reference-api.herokuapp.com';
@@ -81,6 +82,16 @@ class LoginForm extends React.Component {
               >
                 <i className="fas fa-sign-in-alt" /> Sign In
               </button>
+              <br />
+              <NavLink to='/signup'>
+              <button
+                id="view-my-projects-button"
+                className="btn btn-primary ml-2"
+                >
+                <i className="far fa-folder-open" /> Create New Account
+                </button>
+            </NavLink>
+              
             </div>
           </form>
         </div>
