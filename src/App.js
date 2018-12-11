@@ -5,6 +5,7 @@ import SignUp from './components/SignUp';
 import Projects from './components/Projects';
 import UserProject from './components/UserProject';
 import CreateProject from './components/CreateProject';
+import Navbar from './components/Navbar';
 import './App.css';
 
 class App extends Component {
@@ -12,7 +13,9 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
+          
           <div>
+          <Navbar />
             <Route exact path="/" component={() => <Redirect to="/login" />} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />

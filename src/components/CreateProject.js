@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProject } from '../actions/projectActions';
-import Navbar from './Navbar';
 
 class CreateProject extends Component {
   constructor(props) {
@@ -27,7 +26,6 @@ class CreateProject extends Component {
   render() {
     return (
       <div>
-        <Navbar />
         <div
           className="container border border-primary rounded my-5 w-50"
           id="create-project-container"

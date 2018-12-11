@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from './Navbar';
 
 const BASE_URL = 'http://localhost:8000';
 // const BASE_URL = 'https://project-car-reference-api.herokuapp.com';
@@ -10,34 +9,41 @@ class LoginForm extends React.Component {
       email: '',
       password: ''
     };
-    this.handleSubmit=this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit = async event => {
-    event.preventDefault();
-    let response = await fetch(`${BASE_URL}/users/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json; charset=utf-8' },
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password
-      })
-    });
-    let json = await response.json();
-    localStorage.setItem('token', response.headers.get('authorization'));
-    localStorage.setItem('user', json[0].id)
-    this.props.history.push('/projects')
+    try {
+      event.preventDefault();
+      let response = await fetch(`${BASE_URL}/users/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json; charset=utf-8' },
+        body: JSON.stringify({
+          email: this.state.email,
+          password: this.state.password
+        })
+      });
+      let json = await response.json();
+      localStorage.setItem('token', response.headers.get('authorization'));
+      localStorage.setItem('user', json[0].id);
+      this.props.history.push('/projects');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   render() {
     return (
       <div>
-        <Navbar />
         <div
           className="container border border-primary rounded my-5 w-50"
           id="login-form-container"
         >
-          <form id="login-form" className="form text-center" onSubmit={this.handleSubmit}>
+          <form
+            id="login-form"
+            className="form text-center"
+            onSubmit={this.handleSubmit}
+          >
             <h4 className="m-1 text-center">User Login</h4>
             <div className="row">
               <div className="form-group text-center col-12">
@@ -53,7 +59,7 @@ class LoginForm extends React.Component {
                 />
               </div>
               <div className="form-group text-center col-12">
-              <label htmlFor="password" className="control-label" />
+                <label htmlFor="password" className="control-label" />
                 <input
                   type="password"
                   value={this.state.value}

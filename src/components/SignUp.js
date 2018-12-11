@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from './Navbar';
 
 const BASE_URL = 'http://localhost:8000';
 // const BASE_URL = 'https://project-car-reference-api.herokuapp.com';
@@ -27,6 +26,7 @@ class SignUpForm extends React.Component {
       });
       let json = await response.json();
       console.log('Response: ', json);
+      this.props.history.push('/login')
     }
     catch(error) {
       console.log(error)
@@ -34,9 +34,9 @@ class SignUpForm extends React.Component {
   };
 
   render() {
+
     return (
       <div>
-        <Navbar />
         <div
           className="container border border-primary rounded my-5 w-50"
           id="sign-up-container"
