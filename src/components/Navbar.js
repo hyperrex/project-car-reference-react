@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { NavLink, Link } from 'react-router-dom';
-// const BASE_URL = 'http://localhost:8000';
-// const BASE_URL = 'https://project-car-reference-api.herokuapp.com';
+import { NavLink } from 'react-router-dom';
+
 class Navbar extends Component {
   state = {};
 

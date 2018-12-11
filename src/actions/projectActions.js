@@ -1,7 +1,7 @@
 import { FETCH_PROJECTS, NEW_PROJECT } from './types';
 
-const BASE_URL = 'http://localhost:8000';
-// const BASE_URL = 'https://project-car-reference-api.herokuapp.com';
+// const BASE_URL = 'http://localhost:8000';
+const BASE_URL = 'https://project-car-reference-api.herokuapp.com';
 
 export const fetchProjects = () => dispatch => {
   const id = localStorage.getItem('user');

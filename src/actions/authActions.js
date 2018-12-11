@@ -8,8 +8,8 @@ export const USER_SIGNUP_FAILED = 'USER_SIGNUP_FAILED';
 
 export const USER_LOGOUT = 'USER_LOGOUT';
 
-const BASE_URL = 'http://localhost:8082';
-// const BASE_URL = 'https://project-car-reference-api.herokuapp.com';
+// const BASE_URL = 'http://localhost:8082';
+const BASE_URL = 'https://project-car-reference-api.herokuapp.com';
 
 export const userLogin = ({ email, password }, history) => {
   return async dispatch => {

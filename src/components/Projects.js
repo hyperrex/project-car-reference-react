@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchProjects } from '../actions/projectActions'
-import { NavLink } from 'react-router-dom';
 import EditProject from './EditProject';
-const BASE_URL = 'http://localhost:8000';
-// const BASE_URL = 'https://project-car-reference-api.herokuapp.com';
+
+// const BASE_URL = 'http://localhost:8000';
+const BASE_URL = 'https://project-car-reference-api.herokuapp.com';
 
 class Projects extends Component {
   state={
